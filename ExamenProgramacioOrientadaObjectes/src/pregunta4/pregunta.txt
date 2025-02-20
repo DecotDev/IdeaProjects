@@ -1,0 +1,5 @@
+Per què a POO és tan important diferenciar entre la part privada d'una classe i la part
+pública?
+És tan important separar aquestes dues parts perque son la seguretat bàsica del nostre programa,
+per tant no tot ha de ser visible o modificable per tothom, ja que també pot afectar a la funcionalitat
+del nostre programa.
