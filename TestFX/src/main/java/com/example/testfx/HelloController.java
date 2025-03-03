@@ -10,6 +10,8 @@ import java.util.List;
 public class HelloController {
 
     @FXML
+    private Label winLabel;
+    @FXML
     private Button buttonClicker;
     @FXML
     private Button buttonPowerClick;
@@ -121,7 +123,12 @@ public class HelloController {
     }
     @FXML
     public void onWinButtonClick() {
-
+        if (storedClicks >= 5000) {
+            storedClicks -= 5000;
+            winLabel.setText("You Won!");
+            winLabel.setVisible(true);
+            updateClickLabels();
+        }
     }
 
     public void initialize() {

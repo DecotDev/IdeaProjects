@@ -10,7 +10,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx.HelloController">
+<AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx.HelloController" stylesheets="@styles.css">
    <children>
       <VBox AnchorPane.bottomAnchor="534.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="8.0">
          <children>
@@ -47,6 +47,10 @@
          </children>
       </HBox>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Label fx:id="winLabel" text="You Won!" layoutX="300" layoutY="50" styleClass="win-label" visible="false">
+            <font>
+               <Font size="24.0" />
+            </font></Label>
          <Label fx:id="producedClicksLabel" text="Produced clicks: 0">
             <font>
                <Font size="20.0" />
@@ -73,13 +77,6 @@
                <padding>
                   <Insets bottom="16.0" left="32.0" right="32.0" top="16.0" />
                </padding></Button>
-            <Button fx:id="buttonStoreClicks" alignment="CENTER" onAction="#onStoreClicksButtonClick" text="Store clicks">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <padding>
-                  <Insets bottom="16.0" left="32.0" right="32.0" top="16.0" />
-               </padding></Button>
             <Button fx:id="buttonWin" mnemonicParsing="false" onAction="#onWinButtonClick" text="Win (5000c)">
                <padding>
                   <Insets bottom="16.0" left="32.0" right="32.0" top="16.0" />
@@ -88,7 +85,15 @@
                   <Font size="16.0" />
                </font>
             </Button>
+            <Button fx:id="buttonStoreClicks" alignment="CENTER" onAction="#onStoreClicksButtonClick" text="Store clicks">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="16.0" left="32.0" right="32.0" top="16.0" />
+               </padding></Button>
          </children>
       </HBox>
    </children>
+   
 </AnchorPane>
