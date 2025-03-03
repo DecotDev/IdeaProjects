@@ -1,18 +1,24 @@
 package com.example.testfx;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class HelloController {
 
-    public Button buttonClicker;
-    public Button buttonActivate;
-    public Button buttonPowerClick;
-    public Button buttonStoreClicks;
-    public Label clickPowerLabel;
-    public Label clickSecondLabel;
-    public Label storedClicksLabel;
+    @FXML
+    private Button buttonClicker;
+    @FXML
+    private Button buttonPowerClick;
+    @FXML
+    private Button buttonStoreClicks;
+    @FXML
+    private Label clickPowerLabel;
+    @FXML
+    private Label clickSecondLabel;
+    @FXML
+    private Label storedClicksLabel;
 
     private int producedClicks;
     private int clickPowerPrice = 15;
@@ -20,8 +26,9 @@ public class HelloController {
     private int storedClicks;
     private int clickPowerAdd = 1;
     private int clickPerSecond = 1;
+    private boolean clickPerSecondActive = false;
 
-    ClickThread clickThread = new ClickThread(this);
+    ClickThread clickThread;
 
     public int getClickPerSecond() {
         return clickPerSecond;
@@ -53,6 +60,7 @@ public class HelloController {
     }
 
 
+    @FXML
     public void onPowerClickButtonClick() {
         if (storedClicks < clickPowerPrice) return;
         clickPower = clickPower + clickPowerAdd;
@@ -61,20 +69,46 @@ public class HelloController {
         updateClickLabels();
     }
 
+    @FXML
     public void onStoreClicksButtonClick() {
         storedClicks = storedClicks + producedClicks;
         producedClicks = 0;
         updateClickLabels();
     }
 
+    @FXML
+    public void onClicksPerSecondClick() {
+        if (!clickPerSecondActive) {
+            clickPerSecondActive = true;
+            clickThread = new ClickThread(this);
+            //clickThread.start();
+            Platform.runLater(() -> clickThread.start());
+        }
+    }
+    @FXML
+    public void callUpdateLabels() {
+        updateClickLabelsGetters();
+    }
+    @FXML
     public void updateClickLabels() {
         producedClicksLabel.setText("Produced clicks: " + producedClicks);
         clickPowerLabel.setText("Click Power: " + clickPower);
         storedClicksLabel.setText("Stored clicks: " + storedClicks);
         buttonPowerClick.setText("Click Power +" + clickPowerAdd + " (" + clickPowerPrice + "c)");
     }
+    @FXML
+    public void updateClickLabelsGetters() {
+
+        producedClicksLabel.setText("Produced clicks: " + 3);
+        clickPowerLabel.setText("Click Power: " + 3);
+        storedClicksLabel.setText("Stored clicks: " + 3);
+        buttonPowerClick.setText("Click Power +");
+
+        System.out.println("Working");
+    }
+
     public void initialize() {
         updateClickLabels();
-        clickThread.start();
+
     }
 }

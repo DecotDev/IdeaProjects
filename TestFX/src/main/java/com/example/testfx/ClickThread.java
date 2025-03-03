@@ -10,12 +10,15 @@ public class ClickThread extends Thread{
 
     @Override
     public void run() {
-        try {
-            sleep(1000);
-            helloController.setProducedClicks(helloController.getProducedClicks() + helloController.getClickPerSecond());
-            helloController.updateClickLabels();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        while (true) {
+            try {
+                sleep(1000);
+                helloController.setProducedClicks(helloController.getProducedClicks() + helloController.getClickPerSecond());
+                helloController.callUpdateLabels();
+                System.out.println("Thread working :D");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 }

@@ -63,7 +63,7 @@
                <font>
                   <Font size="16.0" />
                </font></Button>
-            <Button mnemonicParsing="false" text="Click/s +1">
+            <Button fx:id="buttonClicksPerSecond" mnemonicParsing="false" onAction="#onClicksPerSecondClick" text="Click/s +1">
                <font>
                   <Font size="16.0" />
                </font></Button>
