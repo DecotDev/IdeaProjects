@@ -19,6 +19,8 @@ public class HelloController {
     private Label clickSecondLabel;
     @FXML
     private Label storedClicksLabel;
+    @FXML
+    private Button buttonClicksPerSecond;
 
     private int producedClicks;
     private int clickPowerPrice = 15;
@@ -26,6 +28,8 @@ public class HelloController {
     private int storedClicks;
     private int clickPowerAdd = 1;
     private int clickPerSecond = 1;
+    private int clickPerSecondPrice = 30;
+    private int clickPerSecondAdd = 1;
     private boolean clickPerSecondActive = false;
 
     ClickThread clickThread;
@@ -65,7 +69,7 @@ public class HelloController {
         if (storedClicks < clickPowerPrice) return;
         clickPower = clickPower + clickPowerAdd;
         storedClicks = storedClicks - clickPowerPrice;
-        clickPowerPrice = (int) (clickPowerPrice * 1.3);
+        clickPowerPrice = (int) (clickPowerPrice * 1.25);
         updateClickLabels();
     }
 
@@ -78,16 +82,22 @@ public class HelloController {
 
     @FXML
     public void onClicksPerSecondClick() {
+        if (storedClicks < clickPerSecondPrice) return;
         if (!clickPerSecondActive) {
             clickPerSecondActive = true;
             clickThread = new ClickThread(this);
             //clickThread.start();
             Platform.runLater(() -> clickThread.start());
         }
+        clickPerSecond = clickPerSecond + clickPerSecondAdd;
+        storedClicks = storedClicks - clickPerSecondPrice;
+        clickPerSecondPrice = (int) (clickPerSecondPrice * 1.16);
+        updateClickLabels();
+
     }
     @FXML
     public void callUpdateLabels() {
-        updateClickLabelsGetters();
+        updateClickLabels();
     }
     @FXML
     public void updateClickLabels() {
@@ -95,16 +105,8 @@ public class HelloController {
         clickPowerLabel.setText("Click Power: " + clickPower);
         storedClicksLabel.setText("Stored clicks: " + storedClicks);
         buttonPowerClick.setText("Click Power +" + clickPowerAdd + " (" + clickPowerPrice + "c)");
-    }
-    @FXML
-    public void updateClickLabelsGetters() {
-
-        producedClicksLabel.setText("Produced clicks: " + 3);
-        clickPowerLabel.setText("Click Power: " + 3);
-        storedClicksLabel.setText("Stored clicks: " + 3);
-        buttonPowerClick.setText("Click Power +");
-
-        System.out.println("Working");
+        clickSecondLabel.setText("Clicks every second: " + clickPerSecond);
+        buttonClicksPerSecond.setText("Click Power +" + clickPerSecondAdd + " (" + clickPerSecondPrice + "c)");
     }
 
     public void initialize() {

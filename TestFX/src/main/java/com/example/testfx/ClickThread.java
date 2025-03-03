@@ -1,6 +1,8 @@
 package com.example.testfx;
 
-public class ClickThread extends Thread{
+import javafx.application.Platform;
+
+public class ClickThread extends Thread {
 
     HelloController helloController;
 
@@ -13,14 +15,18 @@ public class ClickThread extends Thread{
         while (true) {
             try {
                 sleep(1000);
-                helloController.setProducedClicks(helloController.getProducedClicks() + helloController.getClickPerSecond());
-                helloController.callUpdateLabels();
+
+                // Update produced clicks
+                Platform.runLater(() -> {
+                    helloController.setProducedClicks(helloController.getProducedClicks() + helloController.getClickPerSecond());
+                    helloController.callUpdateLabels();
+                });
+
                 System.out.println("Thread working :D");
+
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
     }
 }
-
-//platform.run.later
