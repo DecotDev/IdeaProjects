@@ -52,7 +52,7 @@
                <Font size="20.0" />
             </font></Label>
 
-          <Button fx:id="buttonClicker" mnemonicParsing="false" onAction="#onClickerButtonClick" text="Click!">
+          <Button fx:id="buttonClicker" mnemonicParsing="false" onAction="#onClickerButtonClick" prefHeight="134.0" prefWidth="190.0" text="Click!">
             <font>
                <Font size="24.0" />
             </font></Button>
@@ -62,19 +62,32 @@
             <Button fx:id="buttonPowerClick" mnemonicParsing="false" onAction="#onPowerClickButtonClick" text="Click Power +1 (15c)">
                <font>
                   <Font size="16.0" />
-               </font></Button>
+               </font>
+               <padding>
+                  <Insets bottom="16.0" left="32.0" right="32.0" top="16.0" />
+               </padding></Button>
             <Button fx:id="buttonClicksPerSecond" mnemonicParsing="false" onAction="#onClicksPerSecondClick" text="Click/s +1">
                <font>
                   <Font size="16.0" />
-               </font></Button>
-            <Button mnemonicParsing="false" text="Button">
+               </font>
+               <padding>
+                  <Insets bottom="16.0" left="32.0" right="32.0" top="16.0" />
+               </padding></Button>
+            <Button fx:id="buttonStoreClicks" alignment="CENTER" onAction="#onStoreClicksButtonClick" text="Store clicks">
                <font>
                   <Font size="16.0" />
-               </font></Button>
-            <Button fx:id="buttonStoreClicks" onAction="#onStoreClicksButtonClick" text="Store clicks">
+               </font>
+               <padding>
+                  <Insets bottom="16.0" left="32.0" right="32.0" top="16.0" />
+               </padding></Button>
+            <Button fx:id="buttonWin" mnemonicParsing="false" onAction="#onWinButtonClick" text="Win (5000c)">
+               <padding>
+                  <Insets bottom="16.0" left="32.0" right="32.0" top="16.0" />
+               </padding>
                <font>
                   <Font size="16.0" />
-               </font></Button>
+               </font>
+            </Button>
          </children>
       </HBox>
    </children>

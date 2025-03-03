@@ -23,6 +23,8 @@ public class HelloController {
     private Label storedClicksLabel;
     @FXML
     private Button buttonClicksPerSecond;
+    @FXML
+    private Button buttonWin;
 
     private int producedClicks;
     private int clickPowerPrice = 15;
@@ -116,6 +118,10 @@ public class HelloController {
         buttonPowerClick.setText("Click Power +" + clickPowerAdd + " (" + clickPowerPrice + "c)");
         clickSecondLabel.setText("Clicks every second: " + clickPerSecond);
         buttonClicksPerSecond.setText("Click Power +" + clickPerSecondAdd + " (" + clickPerSecondPrice + "c)");
+    }
+    @FXML
+    public void onWinButtonClick() {
+
     }
 
     public void initialize() {
