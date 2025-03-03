@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="443.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx.StartController">
+   <children>
+      <Button layoutX="216.0" layoutY="175.0" onAction="#onPlayButtonClick" prefHeight="25.0" prefWidth="169.0" text="Play" AnchorPane.topAnchor="175.0" />
+      <Button layoutX="216.0" layoutY="370.0" onAction="#onExitButtonClick" text="Exit" AnchorPane.bottomAnchor="48.0" AnchorPane.leftAnchor="216.0" AnchorPane.rightAnchor="215.0" AnchorPane.topAnchor="370.0" />
+      <Label fx:id="WelcomeLabel" layoutX="224.0" layoutY="64.0" prefHeight="27.0" prefWidth="154.0" text="Clicker Game v1.0" textAlignment="CENTER" AnchorPane.bottomAnchor="362.0" AnchorPane.leftAnchor="224.0" AnchorPane.rightAnchor="222.0" AnchorPane.topAnchor="64.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

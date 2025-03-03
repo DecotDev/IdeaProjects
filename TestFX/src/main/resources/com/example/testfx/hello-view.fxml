@@ -12,7 +12,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.testfx.HelloController">
    <children>
-      <VBox AnchorPane.bottomAnchor="534.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="32.0">
+      <VBox AnchorPane.bottomAnchor="534.0" AnchorPane.leftAnchor="8.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="8.0">
          <children>
             <Label fx:id="clickPowerLabel" text="Click Power: 1">
                <font>
