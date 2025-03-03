@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import java.util.List;
+
 public class HelloController {
 
     @FXML
@@ -27,7 +29,7 @@ public class HelloController {
     private int clickPower = 1;
     private int storedClicks;
     private int clickPowerAdd = 1;
-    private int clickPerSecond = 1;
+    private int clickPerSecond = 0;
     private int clickPerSecondPrice = 30;
     private int clickPerSecondAdd = 1;
     private boolean clickPerSecondActive = false;
@@ -95,15 +97,22 @@ public class HelloController {
         updateClickLabels();
 
     }
+
     @FXML
     public void callUpdateLabels() {
         updateClickLabels();
     }
+
     @FXML
     public void updateClickLabels() {
-        producedClicksLabel.setText("Produced clicks: " + producedClicks);
-        clickPowerLabel.setText("Click Power: " + clickPower);
-        storedClicksLabel.setText("Stored clicks: " + storedClicks);
+
+        List<Label> labels = List.of(producedClicksLabel, clickPowerLabel, storedClicksLabel);
+        List<String> values = List.of("Produced clicks: " + producedClicks, "Click Power: " + clickPower, "Stored clicks: " + storedClicks);
+        labels.forEach(label -> label.setText(values.get(labels.indexOf(label))));
+
+        //producedClicksLabel.setText("Produced clicks: " + producedClicks);
+        //clickPowerLabel.setText("Click Power: " + clickPower);
+        //storedClicksLabel.setText("Stored clicks: " + storedClicks);
         buttonPowerClick.setText("Click Power +" + clickPowerAdd + " (" + clickPowerPrice + "c)");
         clickSecondLabel.setText("Clicks every second: " + clickPerSecond);
         buttonClicksPerSecond.setText("Click Power +" + clickPerSecondAdd + " (" + clickPerSecondPrice + "c)");

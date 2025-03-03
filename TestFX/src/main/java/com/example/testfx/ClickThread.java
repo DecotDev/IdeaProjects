@@ -22,7 +22,7 @@ public class ClickThread extends Thread {
                     helloController.callUpdateLabels();
                 });
 
-                System.out.println("Thread working :D");
+                //System.out.println("Thread working :D");
 
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
