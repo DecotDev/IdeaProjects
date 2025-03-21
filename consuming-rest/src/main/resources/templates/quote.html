@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/5.3.3/css/bootstrap.min.css}">
+    <title>Quote's Spring</title>
+</head>
+<body>
+    <div class="container-fluid border pt-2 d-flex justify-content-center">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://picsum.photos/300/200" alt="random_image">
+            <p class="card-text" th:text="|${quote}|"></p>
+            <a href="#" class="btn btn-primary" onclick="window.location.reload();">Refresh</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <!-- <p th:text="|Missatge, ${wel}!|" /> -->
+
+    <form method="get" action="/greeting">
+        <label>
+            <input type="text" name="name">
+            <input type="submit" value="send">
+        </label>
+    </form>
+    <table>
+        <tr th:each="el: ${msgs}">
+            <td th:text="${el}"></td>
+        </tr>
+    </table>
+</body>
+</html>
