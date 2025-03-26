@@ -3,6 +3,7 @@ package com.decotdev.david_get_api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -15,7 +16,11 @@ public class QuestionsController {
     @Autowired
     QuestionsService service;
 
-    public List<Question> questions(Model model) {
-        Question question = QuestionsService.getQuestion();
+    @GetMapping
+    public String questions(Model model) {
+        Root root = service.getRoot();
+
+        model.addAttribute("questions", root.getQuestions());
+        return "questions";
     }
 }

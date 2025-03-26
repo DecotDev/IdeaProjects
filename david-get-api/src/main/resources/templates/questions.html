@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,5 +7,10 @@
 </head>
 <body>
     <p>Welcome</p>
+    <p th:text="${questions}"></p>
+    <p th:each="question: ${questions}"></p>
+    <p th:text="${question}"></p>
+    <p th:each="question_text: ${question}"></p>
+    <h1 th:text="${question}"></h1>
 </body>
 </html>

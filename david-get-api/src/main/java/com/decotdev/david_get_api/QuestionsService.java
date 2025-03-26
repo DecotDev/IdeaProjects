@@ -11,8 +11,9 @@ public class QuestionsService {
 
     RestTemplate restTemplate = new RestTemplate();
 
-    public List<Question> getQuestion() {
-         = restTemplate.getForObject("https://opentdb.com/api.php?amount=10&category=15", Question.class)
-        return question
+    public Root getRoot() {
+        Root root =  restTemplate.getForObject("https://opentdb.com/api.php?amount=2&category=15&type=multiple", Root.class);
+        //System.out.println(root.getQuestions().toString());
+        return root;
     }
 }
