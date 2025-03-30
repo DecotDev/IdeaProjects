@@ -5,6 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Questions</title>
 </head>
+
+<body>
+<p>Welcome</p>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Question</th>
+        <th>Correct Answer</th>
+        <th>Incorrect Answers</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="question : ${questions}">
+        <td th:text="${question.questionText}"></td>
+        <td th:text="${question.correctAnswer}"></td>
+        <td>
+            <ul>
+                <li th:each="incorrect : ${question.incorrectAnswers}" th:text="${incorrect}"></li>
+            </ul>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
+
+
+<!--
 <body>
     <p>Welcome</p>
     <p th:text="${questions}"></p>
@@ -12,7 +42,13 @@
     <p th:each="question: ${questions}"></p>
     <p th:text="${question}"></p>
 
+    <table>
+        <tr th:each="question: ${questions}">
+            <td  th:text="${question}"></td>
+        </tr>
+    </table>
+
     <p th:each="question_text: ${question}"></p>
     <h1 th:text="${question_text}"></h1>
 </body>
-</html>
+</html>-->
