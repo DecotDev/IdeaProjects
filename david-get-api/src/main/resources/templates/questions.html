@@ -8,9 +8,11 @@
 <body>
     <p>Welcome</p>
     <p th:text="${questions}"></p>
+    <p>Welcome 2</p>
     <p th:each="question: ${questions}"></p>
     <p th:text="${question}"></p>
+
     <p th:each="question_text: ${question}"></p>
-    <h1 th:text="${question}"></h1>
+    <h1 th:text="${question_text}"></h1>
 </body>
 </html>

@@ -9,7 +9,7 @@ import java.util.Arrays;
 public class Question {
     public String difficulty;
     public String category;
-    @Value("question")
+    @Value("question_text")
     public String question;
     public String correct_answer;
     public String[] incorrect_answers;
