@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quiz Game</title>
+</head>
+<body>
+
+<h2 th:text="${question.questionText}"></h2>
+
+<form action="/quiz/answer" method="post">
+    <div th:each="answer : ${answers}">
+        <button type="submit" name="selectedAnswer" th:value="${answer}" th:text="${answer}"></button>
+    </div>
+</form>
+
+<div th:if="${isCorrect != null}">
+    <p th:if="${isCorrect}" style="color: green;">✅ Correct! Moving to next question...</p>
+    <p th:if="${!isCorrect}" style="color: red;">❌ Incorrect! The correct answer was <span th:text="${question.correctAnswer}"></span></p>
+</div>
+
+</body>
+</html>

@@ -1,26 +1,30 @@
 package com.decotdev.david_get_api;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(QuestionsController.QUESTIONS)
+@RequestMapping("/questions")
 public class QuestionsController {
-    public static final String QUESTIONS = "/questions";
+    private final QuestionsService service;
 
-    @Autowired
-    QuestionsService service;
+    public QuestionsController(QuestionsService service) {
+        this.service = service;
+    }
 
     @GetMapping
-    public String questions(Model model) {
-        Root root = service.getRoot();
+    public String showQuestions(Model model) {
+        model.addAttribute("questions", service.getQuestions());
+        return "questions";
+    }
 
-        model.addAttribute("questions", root.getQuestions());
+    @PostMapping("/answer")
+    public String checkAnswer(@RequestParam String questionText, @RequestParam String selectedAnswer, Model model) {
+        boolean isCorrect = service.checkAnswer(questionText, selectedAnswer);
+        model.addAttribute("questions", service.getQuestions());
+        model.addAttribute("answeredQuestion", questionText);
+        model.addAttribute("isCorrect", isCorrect);
         return "questions";
     }
 }
