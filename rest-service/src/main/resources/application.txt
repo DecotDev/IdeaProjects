@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    url: jdbc:mysql://172.0.0.1:3306/usuaris
+    username: dam2
+    password: secreto

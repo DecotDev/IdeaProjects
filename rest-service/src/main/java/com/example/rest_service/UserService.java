@@ -4,25 +4,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
     @Autowired
-    UserRepository userRepository;
+    UserDAO userDAO;
 
     List<User> getUsers() {
-        return  userRepository.getUsers();
+        return  userDAO.findAll();
     }
 
     public User getUserById(int id) {
-        return userRepository.getUserById(id);
+        Optional<User> user = userDAO.findById(id);
+        if (user.isPresent()) return user.get();
+        else return null;
     }
 
-    public void newUser(User user) {
-        userRepository.save(user);
+    public User newUser(UserDTO userDTO) {
+        User user = new User(userDTO);
+        return userDAO.save(user);
     }
 
     public void deleteUser(int id) {
-        userRepository.delete(id);
+        userDAO.deleteById(id);
     }
+
+    //public void deleteUser(int id) {
+    //    userRepository.delete(id);
+    //}
 }
