@@ -28,6 +28,10 @@ public class UserController {
         userService.deleteUser(id);
     }
 
+    public void updateUser(UserDTO userPatched) {
+        userService.patchUser(userPatched);
+    }
+
     //public void removeUser(int id) {
     //    userService.deleteUser(id);
     //}

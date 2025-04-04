@@ -30,6 +30,17 @@ public class UserService {
         userDAO.deleteById(id);
     }
 
+    public User patchUser(UserDTO userPatched) {
+        User existingUser = userDAO.findById(userPatched.getId()).orElse(null);
+        if (existingUser != null) {
+            existingUser.setEmail(userPatched.getEmail());
+            existingUser.setFullName(userPatched.getFullName());
+            existingUser.setPassword(userPatched.getPassword());
+            return userDAO.save(existingUser);
+        }
+        return null;
+    }
+
     //public void deleteUser(int id) {
     //    userRepository.delete(id);
     //}

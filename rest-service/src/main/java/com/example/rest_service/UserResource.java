@@ -1,6 +1,12 @@
 package com.example.rest_service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.fge.jsonpatch.JsonPatch;
+import com.github.fge.jsonpatch.JsonPatchException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,8 +37,8 @@ public class UserResource {
         return ResponseEntity.ok().body(removedUser);
     }*/
 
-    @DeleteMapping("/{ID}")
-    @GetMapping("/{id}")
+    //@GetMapping("/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<UserDTO> removeUser(@PathVariable int id) {
         userController.removeUser(id);
         return ResponseEntity.noContent().build();
@@ -44,4 +50,37 @@ public class UserResource {
         return ResponseEntity.ok().body(user);
     }
 
+    @PatchMapping(path = "/{id}")
+    public ResponseEntity<UserDTO> updateCustomer(@PathVariable int id, @RequestBody JsonPatch patch) {
+        try {
+
+            UserDTO user = userController.getUser(id);
+            UserDTO userPatched = applyPatchToUser(patch, user);
+            userController.updateUser(userPatched);
+            return ResponseEntity.ok(userPatched);
+        } catch (JsonPatchException | JsonProcessingException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    private UserDTO applyPatchToUser(JsonPatch patch, UserDTO targetUser) throws JsonPatchException, JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        JsonNode patched = patch.apply(objectMapper.convertValue(targetUser, JsonNode.class));
+        return objectMapper.treeToValue(patched, UserDTO.class);
+    }
+
+    @PutMapping("/{id}")
+    public UserDTO updateUser(@PathVariable int id, @RequestBody UserDTO user) {
+
+    }
 }
+
+
+/*
+{
+    "id": 6,
+    "email": "sis@email.com",
+    "fullName": "Sise",
+    "password": "1234"
+}
+ */

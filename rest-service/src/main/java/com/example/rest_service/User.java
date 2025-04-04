@@ -50,4 +50,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }
