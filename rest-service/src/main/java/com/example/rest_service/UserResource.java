@@ -70,8 +70,10 @@ public class UserResource {
     }
 
     @PutMapping("/{id}")
-    public UserDTO updateUser(@PathVariable int id, @RequestBody UserDTO user) {
-
+    public ResponseEntity<UserDTO> updateUser(@PathVariable int id, @RequestBody UserDTO userDTO) {
+    userDTO.setId(id);
+    userController.updateUser(userDTO);
+    return ResponseEntity.ok().body(userDTO);
     }
 }
 
