@@ -79,10 +79,33 @@ public class UserResource {
 
 
 /*
+POST: http://localhost:8080/api/v0/users
 {
     "id": 6,
     "email": "sis@email.com",
     "fullName": "Sise",
     "password": "1234"
 }
+
+PATCH: http://localhost:8080/api/v0/users/5
+
+[
+  {
+    "op": "replace",
+    "path": "/email",
+    "value": "thanks4@help.com"
+  }
+]
+
+DELETE: http://localhost:8080/api/v0/users/5
+
+PUT: http://localhost:8080/api/v0/users/5
+
+{
+  "id": 5,
+  "email": "updated@email.com",
+  "fullName": "Updated User",
+  "password": "newpass123"
+}
+
  */
